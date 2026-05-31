@@ -10,39 +10,21 @@
 
 ## 📌 Overview
 
-This repository showcases the research work:
+This repository accompanies the IEEE-published research paper:
 
-### **AI-Based Event-Triggered Decentralized Swarm Coordination for Multi-Vehicle Collision Avoidance**
+**AI-Based Event-Triggered Decentralized Swarm Coordination for Multi-Vehicle Collision Avoidance**
 
-An IEEE-published autonomous vehicle coordination framework that combines:
+The proposed framework combines Event-Triggered Control, Particle Swarm Optimization (PSO), and Distributed Model Predictive Control (DMPC) to enable decentralized autonomous vehicle swarm coordination with significantly reduced computational overhead and communication load while maintaining collision-free operation.
 
-* Event-Triggered Control
-* Particle Swarm Optimization (PSO)
-* Distributed Model Predictive Control (DMPC)
-* Vehicle-to-Vehicle (V2V) Communication
-* Safety-Constrained Multi-Agent Coordination
+### Key Outcomes
 
-Unlike conventional approaches that perform optimization continuously, the proposed framework activates intelligent coordination only during safety-critical situations, drastically reducing computational overhead while maintaining collision-free operation.
-
----
-
-## 🏆 Highlights
-
-✅ IEEE Conference Publication
-
-✅ IEEE RAEEUCCI 2026 Best Paper Award
-
-✅ Zero collisions across 10,000 simulation timesteps
-
-✅ 92.5% reduction in active optimization
-
-✅ 84% reduction in computational cost
-
-✅ 90.5% improvement in Mean Time-To-Collision (MTTC)
-
-✅ 81.9% reduction in speed variance
-
-✅ Scalability validated up to 26 autonomous vehicles
+* 🏆 IEEE RAEEUCCI 2026 Best Paper Award
+* 🚗 Zero collisions across 10,000 simulation timesteps
+* ⚡ 92.5% reduction in active optimization
+* 📉 84% reduction in computational cost
+* 🛡️ 90.5% improvement in Mean Time-To-Collision (MTTC)
+* 📡 Reduced communication overhead through event-triggered activation
+* 📈 Scalability validated up to 26 autonomous vehicles
 
 ---
 
@@ -50,55 +32,45 @@ Unlike conventional approaches that perform optimization continuously, the propo
 
 Large-scale autonomous vehicle swarms require:
 
-* Continuous communication
-* Real-time trajectory planning
+* Continuous coordination
 * Collision avoidance
-* Computationally efficient coordination
+* Efficient communication
+* Real-time trajectory planning
 
-Most existing PSO-DMPC approaches execute optimization at every timestep, resulting in:
+Traditional PSO-DMPC frameworks perform optimization at every timestep, leading to:
 
-* High CPU usage
-* Increased communication traffic
-* Poor embedded deployment feasibility
+* High computational cost
+* Increased communication load
+* Limited scalability
 
-This work introduces an event-triggered architecture where optimization occurs only when safety constraints are violated.
+This work introduces an event-triggered architecture where optimization is activated only when safety-critical conditions arise.
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ Framework Architecture
 
-### Vehicle Layer
+### Event Detection
 
-Each autonomous vehicle independently monitors:
+Each vehicle continuously monitors:
 
 * Position
 * Velocity
-* Heading
-* Inter-vehicle spacing
+* Relative spacing
+* Safety constraints
 
-### Event Detection Layer
+Optimization is triggered only when:
 
-A coordination event is triggered when:
-
-```math
-d_{ij} < d_{safe}
-```
-
-where:
-
-* (d_{ij}) = inter-vehicle distance
-* (d_{safe}) = dynamic safety threshold
+* Safety distance thresholds are violated
+* Potential collision risk is detected
 
 ### Optimization Layer
-
-The framework integrates:
 
 #### Particle Swarm Optimization (PSO)
 
 Used to:
 
 * Generate warm-start solutions
-* Accelerate optimization convergence
+* Accelerate convergence
 * Reduce search complexity
 
 #### Distributed Model Predictive Control (DMPC)
@@ -111,110 +83,80 @@ Used to:
 
 ### Communication Layer
 
-Vehicles communicate using:
-
 * IEEE 802.11p DSRC
-* 5.9 GHz V2V communication
-* 300 m communication range
-
-Communication occurs only during safety-critical events.
+* Vehicle-to-Vehicle (V2V) communication
+* Event-triggered transmission strategy
 
 ---
 
-## 🔬 Core Contributions
+## 🔬 Research Contributions
 
-### 1. Event-Triggered PSO-DMPC Framework
+### 1. Event-Triggered Swarm Coordination
 
-First integration of:
+A decentralized coordination strategy that activates optimization only when required, eliminating unnecessary computational effort.
 
-* Event-triggered coordination
-* PSO warm-start optimization
-* Distributed MPC control
+### 2. Hybrid PSO-DMPC Framework
 
-for decentralized autonomous vehicle swarm coordination.
+Integration of:
 
----
+* Event-triggered control
+* Particle Swarm Optimization
+* Distributed Model Predictive Control
 
-### 2. Computational Efficiency
+for autonomous vehicle swarm coordination.
 
-Compared with continuous optimization:
+### 3. Communication-Aware Optimization
 
-| Metric                 | Improvement |
-| ---------------------- | ----------- |
-| Active Optimization    | ↓ 92.5%     |
-| Computational Cost     | ↓ 84%       |
-| Communication Overhead | ↓ 92.5%     |
+Reduction of unnecessary V2V communication while preserving safety and formation stability.
 
----
+### 4. Realistic Validation
 
-### 3. Safety Enhancement
-
-| Metric           | Baseline | Proposed |
-| ---------------- | -------- | -------- |
-| MTTC             | 20.25 s  | 38.57 s  |
-| Improvement      | —        | +90.5%   |
-| Near-Miss Events | 3083     | 2748     |
-| Collision Events | Multiple | 0        |
+Extensive validation performed using SUMO traffic simulation environments under multiple traffic densities and vehicle configurations.
 
 ---
 
-### 4. Formation Stability
+## 📊 Key Experimental Results
 
-The proposed method improves:
+### Formation Stability
 
-* Inter-vehicle spacing consistency
-* Formation cohesion
-* Speed stability
-
-while reducing speed variance by:
-
-```text
-81.9%
-```
-
-compared to baseline traffic behavior.
+![Formation Stability](figures/formation_spacing_stability.png)
 
 ---
 
-## 📊 Experimental Results
+### Safety Margin Improvement
 
-### Safety Performance
-
-| Metric             | Baseline | Continuous PSO | Event-Triggered PSO |
-| ------------------ | -------- | -------------- | ------------------- |
-| MTTC (s)           | 20.25    | 37.00          | 38.57               |
-| Speed Variance     | 17.58    | 3.20           | 3.19                |
-| CPU Cost (ms/step) | 0.12     | 2.80           | 0.45                |
-| Collisions         | Present  | 0              | 0                   |
+![Safety Margin Improvement](figures/safety_margin_improvement.png)
 
 ---
 
 ### Communication Efficiency
 
-| Metric             | Continuous PSO | Event-Triggered PSO |
-| ------------------ | -------------- | ------------------- |
-| Message Rate       | 563.3 msg/s    | 495.8 msg/s         |
-| AI Activation Rate | 100%           | 7.4%                |
-| Transmission Load  | 100%           | 88%                 |
+![Communication Efficiency](figures/communication_efficiency.png)
 
 ---
 
-### Density Robustness
+### PSO Convergence Analysis
 
-The framework was evaluated under:
+![PSO Convergence](figures/pso_convergence.png)
 
-* 5 vehicles
-* 10 vehicles
-* 20 vehicles
-* 26 vehicles
+---
 
-Results demonstrate:
+### Robustness Under Vehicle Density Variation
 
-* Graceful degradation
-* Stable coordination
-* Zero collisions
+![Robustness](figures/robustness_under_vehicle_density_variation.png)
 
-across all density configurations.
+---
+
+## 📈 Performance Summary
+
+| Metric              | Baseline | Event-Triggered PSO-DMPC |
+| ------------------- | -------- | ------------------------ |
+| Active Optimization | 100%     | 7.5%                     |
+| Computational Cost  | 100%     | 16%                      |
+| MTTC                | 20.25 s  | 38.57 s                  |
+| MTTC Improvement    | —        | +90.5%                   |
+| Collision Events    | Present  | 0                        |
+| Speed Variance      | 17.58    | 3.19                     |
 
 ---
 
@@ -223,12 +165,16 @@ across all density configurations.
 ```text
 Event-Triggered-Decentralized-Swarm-Coordination/
 
-├── docs/
-│   ├── system_architecture.png
-│   ├── pso_convergence.png
+├── figures/
 │   ├── formation_spacing_stability.png
-│   ├── safety_margin.png
+│   ├── formation_consistency.png
+│   ├── deviation_from_ideal_spacing.png
+│   ├── mttc_distribution.png
+│   ├── safety_margin_improvement.png
 │   ├── communication_efficiency.png
+│   ├── pso_convergence.png
+│   ├── robustness_under_vehicle_density_variation.png
+│   └── statistical_significance.png
 │
 ├── paper/
 │   └── publication_information.md
@@ -240,54 +186,24 @@ Event-Triggered-Decentralized-Swarm-Coordination/
 
 ---
 
-## 📈 Key Figures
-
-Add the following figures from your publication:
-
-### System Architecture
-
-```text
-docs/system_architecture.png
-```
-
-### PSO Convergence
-
-```text
-docs/pso_convergence.png
-```
-
-### Formation Stability
-
-```text
-docs/formation_spacing_stability.png
-```
-
-### Safety Margin Improvement
-
-```text
-docs/safety_margin.png
-```
-
-### Communication Efficiency
-
-```text
-docs/communication_efficiency.png
-```
-
----
-
 ## 📖 Publication
 
 **IEEE RAEEUCCI 2026**
 
 **AI-Based Event-Triggered Decentralized Swarm Coordination for Multi-Vehicle Collision Avoidance**
 
-### Authors
+DOI:
 
-* Aravindan M
-* Surya Narayanan S
-* Sree Dharshan G J
-* Akankshya Sethi
+https://doi.org/10.1109/RAEEUCCI67649.2026.11504821
+
+---
+
+## 👥 Authors
+
+1. **Sree Dharshan G J**
+2. **Surya Narayanan S**
+3. **Aravindan M**
+4. Akankshya Sethi
 
 ---
 
@@ -296,7 +212,7 @@ docs/communication_efficiency.png
 ```bibtex
 @inproceedings{sreedharshan2026eventtriggered,
   title={AI-Based Event-Triggered Decentralized Swarm Coordination for Multi-Vehicle Collision Avoidance},
-  author={Aravindan, M and Narayanan, Surya and Sree Dharshan, G J and Sethi, Akankshya},
+  author={Sree Dharshan, G J and Surya Narayanan, S and Aravindan, M and Akankshya, Sethi},
   booktitle={IEEE RAEEUCCI},
   year={2026}
 }
@@ -304,30 +220,32 @@ docs/communication_efficiency.png
 
 ---
 
-## 👨‍💻 Author
+## ⚠️ Repository Notice
+
+This repository is intended for academic visibility and dissemination of published research.
+
+The complete implementation, optimization routines, simulation source code, and experimental assets are not included due to publication and intellectual property considerations.
+
+Only publication-related documentation, figures, and research summaries are provided.
+
+---
+
+## 👨‍💻 Maintainer
 
 ### Sree Dharshan G J
 
 AI Researcher | Multi-Agent Systems | Autonomous Systems
 
-Research Areas:
+Research Interests:
 
 * Multi-Agent Systems
 * Reinforcement Learning
 * Autonomous Vehicles
+* Agentic AI
 * Distributed Optimization
 * Event-Triggered Control
-* Agentic AI
 
----
-
-## ⚠️ Repository Notice
-
-This repository is intended for academic visibility and dissemination of published research.
-
-The complete implementation, simulation source code, optimization routines, and experimental assets are not included due to publication and intellectual property considerations.
-
-Only publication-related materials, figures, and project documentation are provided.
+GitHub: https://github.com/SreeDharshan-GJ
 
 ---
 
