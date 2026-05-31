@@ -11,7 +11,7 @@
 ## 📌 Overview
 
 This repository accompanies the IEEE-published research paper:
-
+hi
 **AI-Based Event-Triggered Decentralized Swarm Coordination for Multi-Vehicle Collision Avoidance**
 
 The proposed framework combines Event-Triggered Control, Particle Swarm Optimization (PSO), and Distributed Model Predictive Control (DMPC) to enable decentralized autonomous vehicle swarm coordination with significantly reduced computational overhead and communication load while maintaining collision-free operation.
